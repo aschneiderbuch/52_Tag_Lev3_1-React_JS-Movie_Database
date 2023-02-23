@@ -43,23 +43,48 @@ const MapFunktion = () => {
 
     // useState movies
 const [sollMovies, setSollMovies] = useState(movies)
+console.log(movies)
+console.log(sollMovies)
 
+const sollMoviesCopy = [...sollMovies]
 // auslöser fürs sortieren 
 // kopie erstellen, damit original gleich bleibt
 function handleSortByRate(){
-    const sollMoviesCopy = [...sollMovies]
-    console.log(sollMoviesCopy)
-
+    //const sollMoviesCopy = [...sollMovies]
+   //  console.log(sollMoviesCopy)
 
 // copy sortieren nach Rate
+// sollMovies    anstatt sollMoviesCopy
 sollMoviesCopy.sort((a, b) => b.rate - a.rate)  // 9-0 absteigend sortieren
+console.log(sollMovies)
 console.log(sollMoviesCopy)
 
-// useState updaten
+// useState updaten 
+// ! return hin, dann wird auch der Desktop aktualisiert
 setSollMovies(sollMoviesCopy)
 
 // ! Ende function ..Sort..Rate
 }
+
+// function  Jahr aufsteigend sortieren 
+function handleSortDateAsc(){
+    sollMoviesCopy.sort((a, b) => a.year - b.year)
+    console.log(sollMovies)
+    console.log(sollMoviesCopy)
+    setSollMovies(sollMoviesCopy)
+
+    // ! Ende function..Sort..DateAsc
+}
+
+// function  Jahr absteigend sortieren 
+function handleSortDateDes(){
+    sollMoviesCopy.sort((a, b) => b.year - a.year)
+    setSollMovies(sollMoviesCopy)
+}
+
+
+console.log(sollMovies)
+console.log(sollMoviesCopy)
 
 // map Funktion 
 const html = sollMovies.map((obj, index) => {
@@ -83,8 +108,8 @@ const html = sollMovies.map((obj, index) => {
     return (
 
         <>
-        <button>Sort by Date Ascending</button>
-        <button>Sort by Date Descending</button>
+        <button onClick={handleSortDateAsc}>Sort by Date Ascending</button>
+        <button onClick={handleSortDateDes}>Sort by Date Descending</button>
         <button onClick={handleSortByRate}>Best Rate</button>
         <button>A-Z</button>
         <button>Z-A</button>
