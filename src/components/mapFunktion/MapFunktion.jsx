@@ -41,13 +41,31 @@ const html = movies.map((obj, index) => {
 
 
 
+
+
+
+
+
+
+
+
 // sfc
 const MapFunktion = () => {
+
+    /************************************************************************************************
+     * 
+     * *          Filter Buttons
+     * 
+     *************************************************************************************************/
+
 
     // useState movies
     const [sollMovies, setSollMovies] = useState(movies)
 
-    const sollMoviesCopy = [...sollMovies]
+
+
+
+    let sollMoviesCopy = [...sollMovies]
     // auslöser fürs sortieren 
     // kopie erstellen, damit original gleich bleibt
     function handleSortByRate() {
@@ -56,6 +74,7 @@ const MapFunktion = () => {
 
         // copy sortieren nach Rate
         // sollMovies    anstatt sollMoviesCopy
+        console.log(sollMoviesCopy)
         sollMoviesCopy.sort((a, b) => b.rate - a.rate)  // 9-0 absteigend sortieren
 
         // useState updaten 
@@ -101,6 +120,78 @@ const MapFunktion = () => {
         setSollMovies(sollMoviesCopy)
     }
 
+    /************************************************************************************************
+     * 
+     * *        Titel Suche
+     * 
+     *************************************************************************************************/
+    // titel suche
+    // useState hook zum inputValue fangen
+
+    // function onChange input
+    function handleTextInput(e) {
+        console.log(e.target.value)
+
+        for (let i = 0; i < sollMovies.length; i++) {
+            console.log(i)
+
+
+            //sollMoviesCopy = [];        // oben von const zu let ändern, damit hier leeren 
+            if (e.target.value.toLowerCase() === sollMovies[i].title.toLocaleLowerCase()) {
+                console.log("in if ")
+
+                const sollMoviesCopys2 = [...sollMoviesCopy]
+
+
+                 sollMoviesCopy = [
+                    {
+                        title: sollMovies[i].title,
+                        year: sollMovies[i].year,
+                        director: sollMovies[i].director,
+                        duration: sollMovies[i].duration,
+                        genre: [sollMovies[i].genre],
+                        rate: [sollMovies[i].rate],
+                    }
+                ]
+                setSollMovies(sollMoviesCopy)
+
+                setTimeout(() => {
+                sollMoviesCopy = [...sollMoviesCopys2]      // somit wird sollMoviesCopy wieder auf 
+                                                            // den Anfangszustand mit 250 Objekten gesetzt
+                                                            // mit dem Timeout kommt eine Verzögerung
+                                                            // so das die suche 10Sek angezeigt wird,
+                                                            // bevor die Seite wieder lädt
+                setSollMovies(sollMoviesCopy)
+                },10000)
+
+
+
+                /* const html = (
+
+                    <Schablone
+                        title={sollMovies[i].title}
+                        year={sollMovies[i].year}
+                        director={sollMovies[i].director}
+                        duration={sollMovies[i].duration}
+                        rate={sollMovies[i].rate}
+                        genre={sollMovies[i].genre}  ></Schablone>);
+                return html
+ */
+
+
+
+
+
+            } else { }
+        }
+    }
+
+
+
+
+
+
+
 
 
 
@@ -125,6 +216,8 @@ const MapFunktion = () => {
     return (
 
         <>
+            <input onChange={handleTextInput} type="text" name="textSuche" id="textSuche" placeholder='Titel Suche  10Sek' />
+
             <article className='art_button'>
                 <button onClick={handleSortDateAsc}>Sort by Date Ascending</button>
                 <button onClick={handleSortDateDes}>Sort by Date Descending</button>
