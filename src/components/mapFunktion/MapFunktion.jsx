@@ -9,6 +9,10 @@ import Schablone from "../schablone/Schablone.jsx";
 // importieren von movies daten
 import { movies } from "../datenObjektMovies/DatenObjektMovies.jsx"
 
+
+// css import
+import "./MapFunktion.scss"
+
 /* 
 // map Funktion 
 const html = movies.map((obj, index) => {
@@ -42,7 +46,7 @@ const MapFunktion = () => {
 
     // useState movies
     const [sollMovies, setSollMovies] = useState(movies)
- 
+
     const sollMoviesCopy = [...sollMovies]
     // auslöser fürs sortieren 
     // kopie erstellen, damit original gleich bleibt
@@ -90,7 +94,7 @@ const MapFunktion = () => {
             } else if (a.title > b.title) {
                 return 1;
 
-            } else return 0; 
+            } else return 0;
         }
 
         )
@@ -98,11 +102,11 @@ const MapFunktion = () => {
     }
 
 
-    
+
 
     // map Funktion 
     const html = sollMovies.map((obj, index) => {
-       
+
         return <Schablone
             key={uuidv4()}
             key_={uuidv4()}
@@ -121,11 +125,13 @@ const MapFunktion = () => {
     return (
 
         <>
-            <button onClick={handleSortDateAsc}>Sort by Date Ascending</button>
-            <button onClick={handleSortDateDes}>Sort by Date Descending</button>
-            <button onClick={handleSortByRate}>Best Rate</button>
-            <button onClick={handleSortAZ}>A-Z</button>
-            <button onClick={handleSortZA}>Z-A</button>
+            <article className='art_button'>
+                <button onClick={handleSortDateAsc}>Sort by Date Ascending</button>
+                <button onClick={handleSortDateDes}>Sort by Date Descending</button>
+                <button onClick={handleSortByRate}>Best Rate</button>
+                <button onClick={handleSortAZ}>A-Z</button>
+                <button onClick={handleSortZA}>Z-A</button>
+            </article>
             {html}
         </>
 

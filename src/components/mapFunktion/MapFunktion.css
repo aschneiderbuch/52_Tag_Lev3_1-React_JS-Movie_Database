@@ -1,0 +1,26 @@
+.art_button {
+  background-color: red;
+  width: 100vw;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  text-align: center;
+}
+.art_button button {
+  background-color: rgb(108, 106, 106);
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+.art_button button:hover {
+  color: yellowgreen;
+  box-shadow: 5px 5px 5px 1px yellowgreen;
+}
+.art_button button:active {
+  background-color: rgb(54, 226, 106);
+  scale: 1.2;
+  color: white;
+}/*# sourceMappingURL=MapFunktion.css.map */
