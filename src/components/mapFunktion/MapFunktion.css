@@ -22,4 +22,13 @@
   background-color: rgb(54, 226, 106);
   scale: 1.2;
   color: white;
+}
+
+#textSuche {
+  margin-top: 20px;
+  padding: 5px 40px;
+  border-radius: 20px;
+  border: 10px linear-gradient(21deg, #10abff, #1beabd);
+  pointer-events: visibleFill;
+  box-shadow: inset 3px -3px 30px #1beabd, -3px 3px 30px #10abff;
 }/*# sourceMappingURL=MapFunktion.css.map */
