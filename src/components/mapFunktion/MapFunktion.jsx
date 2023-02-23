@@ -9,7 +9,6 @@ import Schablone from "../schablone/Schablone.jsx";
 // importieren von movies daten
 import { movies } from "../datenObjektMovies/DatenObjektMovies.jsx"
 
-console.log(movies)
 /* 
 // map Funktion 
 const html = movies.map((obj, index) => {
@@ -43,9 +42,7 @@ const MapFunktion = () => {
 
     // useState movies
     const [sollMovies, setSollMovies] = useState(movies)
-    console.log(movies)
-    console.log(sollMovies)
-
+ 
     const sollMoviesCopy = [...sollMovies]
     // auslöser fürs sortieren 
     // kopie erstellen, damit original gleich bleibt
@@ -89,11 +86,11 @@ const MapFunktion = () => {
         sollMoviesCopy.sort((a, b) => {
             if (a.title > b.title) {
                 return -1;
-                
+
             } else if (a.title > b.title) {
                 return 1;
 
-            } 
+            } else return 0; 
         }
 
         )
@@ -101,14 +98,11 @@ const MapFunktion = () => {
     }
 
 
-    console.log(sollMovies)
-    console.log(sollMoviesCopy)
+    
 
     // map Funktion 
     const html = sollMovies.map((obj, index) => {
-        console.log(obj)
-        console.log(index)
-        console.log(uuidv4())
+       
         return <Schablone
             key={uuidv4()}
             key_={uuidv4()}
