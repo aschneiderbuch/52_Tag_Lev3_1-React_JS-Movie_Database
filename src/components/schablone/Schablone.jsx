@@ -1,5 +1,7 @@
 // Schablone fürs anzeigen
 
+// import uuid
+import { v4 as uuidv4 } from 'uuid';
 
 import "./Schablone.scss"
 
@@ -15,7 +17,12 @@ const Schablone = (props) => {
                 <p>{props.director}</p>
                 <p>{props.duration}</p>
                 <p>{props.rate}</p>
-                <p>{props.genre}</p>
+                {/* // * nochmal drüber map en um sie einzeln aufzuzählen und in einem p-Tag wiederzugeben */}
+                {props.genre.map((gerneEinzeln,i) => {
+                    return <p key={i} key_i={uuidv4()} > {gerneEinzeln} </p>   // key ist nur für react und map 
+                                                                                // wird in browser nicht angezeigt
+                })}
+             {/*    <p>{props.genre}</p> */}
 
             </article>
         
